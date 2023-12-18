@@ -3,7 +3,7 @@ const progressbar = require('string-progressbar');
 
 module.exports = {
     name: 'repeat',
-    description: "Skip het huidigr nummer",
+    description: "Herhaal het huidige nummer of de afspeellijst",
     type: ApplicationCommandType.ChatInput,
     cooldown: 3000,
     run: async (client, interaction) => {

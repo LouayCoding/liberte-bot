@@ -3,7 +3,7 @@ const progressbar = require('string-progressbar');
 
 module.exports = {
     name: 'stop',
-    description: "Give someone a slap",
+    description: "Stop het afspelen en verwijder de wachtrij",
     type: ApplicationCommandType.ChatInput,
     cooldown: 3000,
     run: async (client, interaction) => {

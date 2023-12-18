@@ -1,4 +1,4 @@
-const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, ComponentType } = require("discord.js");
+const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js");
 
 async function playEvent(client) {
     client.distube.on('playSong', async (queue, song) => {
@@ -7,14 +7,13 @@ async function playEvent(client) {
         const embed = new EmbedBuilder()
             .setTitle(song.name)
             .setURL(song.url)
-            .setAuthor({ name: 'Speelt nu', iconURL: 'https://im3.ezgif.com/tmp/ezgif-3-00f7be0751.gif' })
             .addFields(
                 { name: 'Kanaal', value: song.uploader.name, inline: true },
                 { name: 'Duur', value: song.formattedDuration, inline: true },
                 { name: 'Views', value: `${song.views.toLocaleString()}`, inline: true },
-                { name: 'Position', value: `${song.user.tag}`, inline: true }
+                { name: 'Positie', value: `${song.user.tag}`, inline: true }
             )
-            .setFooter({ name: `Er zitten ${queue.length} nummers in de queue`})
+            .setFooter({ text: `Er zitten ${queue.songs.length} nummers in de queue`})
             .setThumbnail(song.thumbnail)
 
         const row = new ActionRowBuilder()

@@ -3,7 +3,7 @@ const timestampToDate = require('timestamp-to-date');
 
 module.exports = {
     name: 'serverinfo',
-    description: "Verkrijg de server statistieken",
+    description: "Krijg alle details over deze server in een oogopslag!",
     run: async (client, interaction) => {
         const guildName = interaction.guild.name;
         const guildIcon = interaction.guild.iconURL();

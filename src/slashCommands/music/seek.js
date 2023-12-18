@@ -3,7 +3,7 @@ const progressbar = require('string-progressbar');
 
 module.exports = {
     name: 'seek',
-    description: "Skip het huidigr nummer",
+    description: "Spring naar een specifiek tijdstip in het nummer",
     type: ApplicationCommandType.ChatInput,
     cooldown: 3000,
     run: async (client, interaction) => {

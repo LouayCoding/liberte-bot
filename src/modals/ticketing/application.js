@@ -1,28 +1,28 @@
 const { EmbedBuilder } = require('@discordjs/builders');
+const { applicationChannelId } = require('../../config');
 
 module.exports = {
-    id: 'application',
+    id: 'applicationModal',
     permissions: [],
     run: async (client, interaction) => {
-        const name = interaction.fields.getTextInputValue('name');
-        const active = interaction.fields.getTextInputValue('active');
-        const motivation = interaction.fields.getTextInputValue('motivation');
+        const name = interaction.fields.getTextInputValue('nameInput');
+        const active = interaction.fields.getTextInputValue('ageInput');
+        const motivation = interaction.fields.getTextInputValue('experienceInput');
 
-        const channel = await interaction.guild.channels.fetch(client.config.applicationChannel);
+        const channel = await interaction.guild.channels.fetch(applicationChannelId);
         if (!channel) return interaction.reply({ content: "Er is een fout opgetreden.", ephemral: true });
 
         const embed = new EmbedBuilder()
             .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL() })
             .addFields(
                 { name: 'Naam', value: name, inline: false },
-                { name: 'Actief', value: active, inline: false },
+                { name: 'Leeftijd', value: active, inline: false },
                 { name: 'Motivatie', value: motivation, inline: false }
             )
-            .setThumbnail(interaction.user.displayAvatarURL())
             .setTimestamp()
-            .setFooter({ text: client.config.footer})
+            .setFooter({ text: 'Liberté' })
         channel.send({ embeds: [embed] });
-        interaction.reply({ content: 'Uw sollicitatie is succesvol verzonden.', ephemeral: true });
+        interaction.reply({ content: 'Je sollicitatie is succesvol verzonden.', ephemeral: true });
 
     }
 };

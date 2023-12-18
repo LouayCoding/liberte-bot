@@ -1,26 +1,26 @@
-const { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ApplicationCommandOptionType } = require('discord.js');
+const { ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } = require('discord.js');
 const axios = require('axios');
 
 module.exports = {
 	name: 'hug',
-	description: "Give someone a hug",
+	description: "Geef iemand een knuffel",
 	type: ApplicationCommandType.ChatInput,
 	cooldown: 3000,
     options: [
         {
             name: 'user',
-            description: 'The user you want to hug.',
+            description: 'De gebruiker die je wilt knuffelen',
             type: ApplicationCommandOptionType.User,
             required: true
         }
     ],
 	run: async (client, interaction) => {
         const user = interaction.options.get('user')?.user;	
-        if(isAuthor(user, interaction.user)) return interaction.reply({ content: 'You can\'t hug yourself', ephemeral: true})
+        if(isAuthor(user, interaction.user)) return interaction.reply({ content: 'Je kunt jezelf niet knuffelen.', ephemeral: true})
         const gif = await kissGif();
 
         const embed = new EmbedBuilder()
-        .setDescription(`**${interaction.member} gave ${user} a hug!**`)
+        .setDescription(`**${interaction.member} gaf ${user} een knuffel!**`)
         .setImage(gif)
         .setColor(client.config.primaryColor)
 

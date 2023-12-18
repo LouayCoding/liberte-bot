@@ -3,7 +3,7 @@ const progressbar = require('string-progressbar');
 
 module.exports = {
     name: 'shuffle',
-    description: "Give someone a slap",
+    description: "Speel de afspeellijst in een willekeurige volgorde af",
     type: ApplicationCommandType.ChatInput,
     cooldown: 3000,
     run: async (client, interaction) => {

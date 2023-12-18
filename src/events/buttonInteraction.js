@@ -4,7 +4,6 @@ const client = require('..');
 client.on('interactionCreate', async interaction => {
     if (!interaction.isButton()) return;
 
-
     const button = client.buttons.get(interaction.customId);
     if (!button) return;
 

@@ -3,12 +3,11 @@ const progressbar = require('string-progressbar');
 
 module.exports = {
     name: 'pause',
-    description: "Give someone a slap",
+    description: "Pauzeer het afspelen",
     type: ApplicationCommandType.ChatInput,
     cooldown: 3000,
     run: async (client, interaction) => {
-        const pause = await client.music.pause(interaction);
-
+        await client.music.pause(interaction);
     }
 };
 

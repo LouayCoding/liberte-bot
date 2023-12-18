@@ -6,7 +6,7 @@ table.setHeading('menus', 'Stats').setBorder('|', '=', "0", "0")
 
 module.exports = (client) => {
   fs.readdirSync('./src/menus/').forEach(dir => {
-    const files = fs.readdirSync(`./menus/${dir}/`).filter(file => file.endsWith('.js'));
+    const files = fs.readdirSync(`./src/menus/${dir}/`).filter(file => file.endsWith('.js'));
     if (!files || files.length <= 0) console.log(chalk.red("menus - 0"))
     files.forEach((file) => {
       let menu = require(`../menus/${dir}/${file}`)

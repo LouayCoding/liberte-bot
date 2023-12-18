@@ -53,18 +53,6 @@ module.exports = (client) => {
 			} catch (error) {
 				console.log(error);
 			}
-
-			try {
-				await rest.put(
-
-					Routes.applicationGuildCommands(CLIENT_ID, "1055865180946440213"),
-
-					{ body: slashCommands }
-				);
-				console.log(chalk.yellow('Slash Commands • Registered'))
-			} catch (error) {
-				console.log(error);
-			}
 	})();
 
 	

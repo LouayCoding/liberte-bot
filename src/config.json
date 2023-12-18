@@ -4,7 +4,7 @@
 	"messages": {
 		"COOLDOWN_MESSAGE": "You are on `<duration>` cooldown!"
 	},
-	"primaryColor": "Black",
+	"primaryColor": 0,
 	"footer": "Gon",
 	"applicationChannel":"1066503119527235655",
 	"ticket": {

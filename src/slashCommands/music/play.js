@@ -2,13 +2,13 @@ const { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, A
 
 module.exports = {
     name: 'play',
-    description: "Give someone a slap",
+    description: "Speel een liedje af",
     type: ApplicationCommandType.ChatInput,
     cooldown: 3000,
     options: [
         {
             name: 'nummer',
-            description: 'The user you want to slap.',
+            description: 'Het liedje dat je wilt afspelen.',
             type: ApplicationCommandOptionType.String,
             required: true
         }
