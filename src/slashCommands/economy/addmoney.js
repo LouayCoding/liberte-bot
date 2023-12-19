@@ -67,7 +67,7 @@ module.exports = {
             await argumentUser.balance.add(amount)
 
             const embed = new EmbedBuilder()
-                .setDescription(`Je hebt succesvol **€ ${amount}** toegevoegd aan het saldo van ${argumentUser}.`)
+                .setDescription(`Je hebt succesvol **€ ${amount}** toegevoegd aan het saldo van ${interaction.options.getUser('gebruiker')}.`)
                 .setColor('5865F2');
 
             interaction.reply({ embeds: [embed] })
@@ -92,7 +92,7 @@ module.exports = {
             await argumentUser.balance.subtract(amount)
 
             const embed = new EmbedBuilder()
-                .setDescription(`Je hebt succesvol **€ ${amount}** verwijderd van het saldo van ${argumentUser}.`)
+                .setDescription(`Je hebt succesvol **€ ${amount}** verwijderd van het saldo van ${interaction.options.getUser('gebruiker')}.`)
                 .setColor('5865F2');
 
             interaction.reply({ embeds: [embed] })

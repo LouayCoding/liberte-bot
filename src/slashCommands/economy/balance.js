@@ -1,5 +1,4 @@
 const { ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } = require('discord.js');
-const Economy = require('discord-economy-super/mongodb');
 
 module.exports = {
 	name: 'balance',
@@ -15,8 +14,9 @@ module.exports = {
         }
     ],
 	run: async (client, interaction) => {
-        const economyUser = interaction.options.get('gebruiker') || interaction.member;	
-        const balanceData = client.eco.cache.balance.get({ memberID: interaction.member.id, guildID: interaction.guild.id });
+        const economyUser = interaction.options.get('gebruiker') || interaction;	
+        const balanceData = client.eco.cache.balance.get({ memberID: economyUser.user.id, guildID: interaction.guild.id });
+
         const [balance, bank] = [balanceData?.money, balanceData?.bank];
 
         const embed = new EmbedBuilder()

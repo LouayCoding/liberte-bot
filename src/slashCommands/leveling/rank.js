@@ -18,7 +18,7 @@ module.exports = {
         .setRank(user.position) // Position of the user on the leaderboard
         .setLevel(user.level) // Current Level of the user
         .setUsername(target.user.username)
-        .setBackground('https://www.pixground.com/wp-content/uploads/2023/06/Blue-Abstract-Background-4K-Wallpaper-1024x576.webp')
+        .setBackground('https://images.unsplash.com/photo-1629935252276-2e9267f778a1?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bmlnaHQlMjBjYXJ8ZW58MHx8MHx8fDA%3D')
 
     rank.build()
         .then(data => {
