@@ -17,7 +17,7 @@ client.on('messageCreate', async message => {
 	if (message.author.bot) return;
 	if (message.channel.type !== 0) return;
 
-	// await countSystem(message);
+	await countSystem(message);
 
 
 	Array.from(new Set(message.content.match(urlRegex()))).slice(0, 1).forEach((url) => {

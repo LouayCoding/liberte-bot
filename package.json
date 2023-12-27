@@ -30,7 +30,6 @@
     "libsodium-wrappers": "^0.7.13",
     "openai": "^4.20.1",
     "opusscript": "^0.0.8",
-    "quick.db": "^9.1.7",
     "simply-blackjack": "^1.0.3",
     "string-progressbar": "^1.0.4",
     "timestamp-to-date": "^1.1.0",

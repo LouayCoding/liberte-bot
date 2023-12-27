@@ -78,6 +78,7 @@ module.exports = {
                 });
             });
 
+            console.log('kanker')
             const leaderboard = new LeaderboardBuilder() // Build the Rank Card
                 .setHeader({ image: interaction.guild.iconURL({ extension: "png" }), title: `${interaction.guild.name} Leveling Leaderboard` })
                 .setBackground('https://wallpapercave.com/wp/wp9392067.png')

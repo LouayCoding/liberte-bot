@@ -8,24 +8,24 @@ module.exports = {
     options: [
         {
             name: 'get',
-            description: 'Gets a users avatar',
+            description: 'Haalt de avatar van een gebruiker op',
             type: ApplicationCommandOptionType.Subcommand,
             options: [
                 {
-                    name: 'user',
-                    description: 'User to fetch the avatar from',
+                    name: 'gebruiker',
+                    description: 'Gebruiker van wie de avatar moet worden opgehaald',
                     type: ApplicationCommandOptionType.User
                 }
             ]
         },
         {
-            name: 'guild',
-            description: 'Gets a users guild avatar, if they have one',
+            name: 'server',
+            description: 'Haalt de serveravatar van een gebruiker op, als deze er een heeft',
             type: ApplicationCommandOptionType.Subcommand,
             options: [
                 {
-                    name: 'user',
-                    description: 'User to fetch the avatar from',
+                    name: 'gebruiker',
+                    description: 'Gebruiker van wie de avatar moet worden opgehaald',
                     type: ApplicationCommandOptionType.User
                 }
             ]
@@ -33,15 +33,15 @@ module.exports = {
     ],
     run: async (client, interaction) => {
         const command = interaction.options.getSubcommand();
-        const member = interaction.options.get('user')?.member || interaction.member;
-        const user = interaction.options.get('user')?.user || interaction.user;
+        const member = interaction.options.get('gebruiker')?.member || interaction.member;
+        const user = interaction.options.get('gebruiker')?.user || interaction.user;
         let avatar;
 
         if (command === 'guild') {
             let fetchMember = await interaction.guild.members.fetch(user.id);
             let guildAvatar = fetchMember.avatarURL({ size: 4096, extension: 'png' });
             if (guildAvatar) avatar = guildAvatar;
-            else return interaction.reply({ content: `${fetchMember} does not have a server avatar.`, ephemeral: true });
+            else return interaction.reply({ content: `${fetchMember} heeft geen serveravatar.`, ephemeral: true });
         }
 
         if (command === 'get') {

@@ -4,6 +4,7 @@ const { SpotifyPlugin } = require('@distube/spotify')
 const { SoundCloudPlugin } = require('@distube/soundcloud');
 const { YtDlpPlugin } = require('@distube/yt-dlp');
 const Music = require('../src/utils/loadMusic');
+const path = require('path');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://attahirilouay:attahirilouay@cluster0.3hipxxt.mongodb.net/', {
@@ -60,9 +61,10 @@ client.music = new Music(client);
 
 module.exports = client;
 
-fs.readdirSync(__dirname + '\\handlers').forEach((handler) => {
-	require(__dirname + `\\handlers\\${handler}`)(client);
-});
+fs.readdirSync(path.join(__dirname, 'handlers')).forEach((handler) => {
+	const handlerPath = path.join(__dirname, 'handlers', handler);
+	require(handlerPath)(client);
+  });
 
 client.music.loadMusic(client);
 

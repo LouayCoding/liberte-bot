@@ -18,6 +18,10 @@ module.exports = {
                 {
                     name: 'picperms',
                     value: 'picperms'
+                },
+                {
+                    name: 'ticket',
+                    value: 'ticket'
                 }
             ]
         }
@@ -38,11 +42,32 @@ module.exports = {
                 break;
             case 'picperms':
                 const picpermsEmbed = new EmbedBuilder()
-                    .setTitle('Hoe krijg ik pic perms?' )
+                    .setTitle('Hoe krijg ik pic perms?')
                     .setDescription('**Level 5** geeft automatisch toegang tot **pic perms**. Gebruik dit privilege verantwoordelijk; misbruik kan leiden tot intrekking om de serverpositiviteit te behouden.')
                     .setColor('#5865F2')
                 await interaction.channel.send({ embeds: [picpermsEmbed] });
                 return interaction.reply({ content: `**${soort}** tekst succesvol verzonden.`, ephemeral: true });
+                break;
+            case 'ticket':
+                const embed = new EmbedBuilder()
+                    .setTitle('Support')
+                    .setDescription('Klik op de knop hieronder om een ticket aan te maken. Misbruik van deze functie wordt niet getolereerd en kan leiden tot een ban voor alle gebruikers.')
+                    .setColor('#5865F2');
+
+                const ticketButton = new ButtonBuilder()
+                    .setCustomId('ticket')
+                    .setLabel('Ticket openen')
+                    .setEmoji('📩')
+                    .setStyle(ButtonStyle.Secondary);
+
+                const row = new ActionRowBuilder()
+                    .addComponents(ticketButton);
+
+
+                await interaction.reply({
+                    embeds: [embed],
+                    components: [row],
+                });
                 break;
             default:
                 break;

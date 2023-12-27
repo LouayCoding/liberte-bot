@@ -23,10 +23,10 @@ module.exports = {
 
         await interaction.reply({ embeds: [embed] });
 
-        function gayRate(mentionedUser) {
+        function gayRate(targetUser) {
             const result = Math.ceil(Math.random() * 100);
-            if (mentionedUser.id === author.id) return `Jij bent **${result}%** gay.`
-            return `${mentionedUser} is **${result}%** gay 🏳️‍🌈.`
+            if (interaction.user.id === targetUser.id) return `Jij bent **${result}%** gay.`
+            return `${targetUser} is **${result}%** gay 🏳️‍🌈.`
         }
     }
 };

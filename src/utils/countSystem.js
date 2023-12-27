@@ -63,7 +63,6 @@ const countSystem = async (message) => {
     const countChannel = config.countChannelId;
     const channel = message.guild.channels.cache.get(config.countChannelId);
 
-    console.log(channel.id, countChannel.id)
     if (channel.id !== countChannel) return;
     if (!regex.test(message.content)) return;
 
