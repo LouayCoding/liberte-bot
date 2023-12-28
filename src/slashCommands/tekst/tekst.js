@@ -1,4 +1,4 @@
-const { EmbedBuilder, ApplicationCommand, ApplicationCommandOptionType, Application, ApplicationCommandType } = require('discord.js');
+const { EmbedBuilder, ButtonStyle, ApplicationCommandOptionType, ActionRowBuilder, ApplicationCommandType, ButtonBuilder } = require('discord.js');
 
 module.exports = {
     name: 'tekst',
@@ -64,7 +64,7 @@ module.exports = {
                     .addComponents(ticketButton);
 
 
-                await interaction.reply({
+                await interaction.channel.send({
                     embeds: [embed],
                     components: [row],
                 });

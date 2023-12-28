@@ -2,9 +2,16 @@ const { EmbedBuilder, PermissionsBitField, ActionRowBuilder, ButtonBuilder, Butt
 const client = require('..');
 
 client.on('interactionCreate', async interaction => {
+    let button;
+    console.log(interaction.customId)
     if (!interaction.isButton()) return;
+    if(interaction.customId.startsWith('accepteren')){
+        button = client.buttons.get('accepteren');
+    } else {
+        button = client.buttons.get(interaction.customId);
+    }
 
-    const button = client.buttons.get(interaction.customId);
+    
     if (!button) return;
 
     try {

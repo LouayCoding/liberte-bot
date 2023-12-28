@@ -5,6 +5,7 @@ const { SoundCloudPlugin } = require('@distube/soundcloud');
 const { YtDlpPlugin } = require('@distube/yt-dlp');
 const Music = require('../src/utils/loadMusic');
 const path = require('path');
+const config = require('./config');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://attahirilouay:attahirilouay@cluster0.3hipxxt.mongodb.net/', {
@@ -32,7 +33,7 @@ const client = new Client({
 });
 
 const fs = require('fs');
-const config = require('./config.json');
+
 
 require('dotenv').config();
 
@@ -56,7 +57,6 @@ collections.forEach(name => client[name] = new Collection());
 
 
 client.prefix = config.prefix;
-client.config = config;
 client.music = new Music(client);
 
 module.exports = client;
