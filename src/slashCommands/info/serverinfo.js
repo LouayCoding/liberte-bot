@@ -28,7 +28,6 @@ module.exports = {
                 { name: 'Roles', value: rolesAmount, inline: true },
             )
             .setFooter({ text: footerText })
-            .setColor(client.config.primaryColor)
 
         return interaction.reply({ embeds: [embed] })
     }

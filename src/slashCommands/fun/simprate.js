@@ -20,7 +20,6 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setDescription(text)
-            .setColor(client.config.primaryColor)
 
         await interaction.reply({ embeds: [embed] });
 

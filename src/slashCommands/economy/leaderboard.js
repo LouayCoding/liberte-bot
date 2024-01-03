@@ -68,9 +68,11 @@ module.exports = {
 
             leaderboardData.forEach((data, index) => {
                 const member = interaction.guild.members.cache.get(data.userID);
+                if(!member) return;
+                console.log(member.user.displayAvatarURL({ forceStatic: true, extension: 'png' }))
                 leaderboardArray.push({
                     rank: index + 1,
-                    avatar: member ? member.user.displayAvatarURL({ extension: "png" }) : 'https://cdn.discordapp.com/avatars/935943312815300699/38a45888794ddb0c325235981f2258d9.png?size=4096',
+                    avatar: member ? member.user.displayAvatarURL({ extension: "png", forceStatic: true }) : 'https://cdn.discordapp.com/avatars/935943312815300699/38a45888794ddb0c325235981f2258d9.png?size=4096',
                     username: member ? member.username : "Unknown Member",
                     displayName: member ? member.displayName : "Unknown Member",
                     level: data.level,
@@ -78,13 +80,14 @@ module.exports = {
                 });
             });
 
-            console.log('kanker')
+
             const leaderboard = new LeaderboardBuilder() // Build the Rank Card
                 .setHeader({ image: interaction.guild.iconURL({ extension: "png" }), title: `${interaction.guild.name} Leveling Leaderboard` })
                 .setBackground('https://wallpapercave.com/wp/wp9392067.png')
                 .setPlayers(leaderboardArray)
                 .adjustCanvas()
 
+                console.log(leaderboardArray)
             const imageBuffer = await leaderboard.build({ format: "png" });
             const attachment = new AttachmentBuilder(imageBuffer, "leaderboard.png");
             interaction.reply({ files: [attachment] });

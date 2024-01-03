@@ -3,7 +3,7 @@ const client = require('..');
 
 client.on('interactionCreate', async interaction => {
     let button;
-    console.log(interaction.customId)
+
     if (!interaction.isButton()) return;
     if(interaction.customId.startsWith('accepteren')){
         button = client.buttons.get('accepteren');

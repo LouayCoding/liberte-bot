@@ -12,7 +12,6 @@ const economy = async (interaction) => {
 
 
 	const userID = interaction.options.getUser('gebruiker')?.id;
-	console.log(userID)
 
 	let argumentUser = client.eco.cache.users.get({
 		memberID: userID,

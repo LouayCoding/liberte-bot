@@ -8,5 +8,6 @@ module.exports = {
     berichtenLogChannelId: '1184272075792318534',
     ticketCategoryId: '1186113309209006282',
     picperms: '1188116466009116783',
-    prefix: '!'
+    prefix: '!',
+    guildId: '1181713621202522162'
 };

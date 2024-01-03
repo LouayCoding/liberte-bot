@@ -43,7 +43,7 @@ module.exports = {
             case 'picperms':
                 const picpermsEmbed = new EmbedBuilder()
                     .setTitle('Hoe krijg ik pic perms?')
-                    .setDescription('**Level 5** geeft automatisch toegang tot **pic perms**. Gebruik dit privilege verantwoordelijk; misbruik kan leiden tot intrekking om de serverpositiviteit te behouden.')
+                    .setDescription('Plaats **.gg/liberte** in je status voor **pic perms** in deze server.')
                     .setColor('#5865F2')
                 await interaction.channel.send({ embeds: [picpermsEmbed] });
                 return interaction.reply({ content: `**${soort}** tekst succesvol verzonden.`, ephemeral: true });

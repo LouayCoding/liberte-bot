@@ -22,7 +22,6 @@ module.exports = {
         const embed = new EmbedBuilder()
         .setDescription(`**${interaction.member} gaf ${user} een knuffel!**`)
         .setImage(gif)
-        .setColor(client.config.primaryColor)
 
         await interaction.reply({ embeds: [embed]});
 

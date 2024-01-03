@@ -142,7 +142,6 @@ module.exports = {
 
                 } else if (i.customId === 'banner') {
                     const userFetch = await user.fetch({ force: true });
-                    console.log(userFetch)
                     const userBanner = userFetch.bannerURL({ size: 1024 });
                     if (!userBanner) return i.reply({ content: `${user}, heeft geen server banner.`, ephemeral: true });
 

@@ -2,7 +2,6 @@ const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("
 
 function addSong(client) {
     client.distube.on('addSong', (queue, song) => {
-        console.log('ss/')
         const interaction = song.metadata.i;
 
         const embed = new EmbedBuilder()

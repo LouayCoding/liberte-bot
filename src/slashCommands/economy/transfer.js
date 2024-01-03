@@ -42,7 +42,6 @@ module.exports = {
         const receiver = argumentUser
 
         const senderBalance = await sender.balance.get();
-        console.log(senderBalance)
         const amount = amountString == 'all' ? senderBalance : parseInt(amountString)
 
 

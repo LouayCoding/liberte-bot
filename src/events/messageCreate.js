@@ -5,6 +5,7 @@ const client = require('..');
 const config = require('../config');
 const Levels = require("discord-xp");
 const { tiktok } = require('../utils/tiktok');
+const { instagram } = require('../utils/instagram');
 const { countSystem } = require('../utils/countSystem');
 const { leveling } = require('../utils/leveling');
 Levels.setURL("mongodb+srv://attahirilouay:attahirilouay@cluster0.3hipxxt.mongodb.net/");
@@ -21,7 +22,7 @@ client.on('messageCreate', async message => {
 
 
 	Array.from(new Set(message.content.match(urlRegex()))).slice(0, 1).forEach((url) => {
-       tiktok(message, url)
+       tiktok(message, url);
     });
 
 	await leveling(message)
