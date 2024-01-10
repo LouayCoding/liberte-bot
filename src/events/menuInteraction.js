@@ -3,6 +3,7 @@ const client = require('..');
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isStringSelectMenu()) return;
+
     const menu = client.menus.get(interaction.customId);
     if (!menu) return;
 

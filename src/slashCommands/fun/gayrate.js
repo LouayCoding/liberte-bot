@@ -1,5 +1,6 @@
 const { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ApplicationCommandOptionType } = require('discord.js');
 const axios = require('axios');
+const { primaryColor } = require('../../config');
 
 module.exports = {
     name: 'gayrate',
@@ -20,12 +21,12 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setDescription(text)
+            .setColor(primaryColor)
 
         await interaction.reply({ embeds: [embed] });
 
         function gayRate(targetUser) {
             const result = Math.ceil(Math.random() * 100);
-            if (interaction.user.id === targetUser.id) return `Jij bent **${result}%** gay.`
             return `${targetUser} is **${result}%** gay 🏳️‍🌈.`
         }
     }

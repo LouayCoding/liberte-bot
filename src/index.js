@@ -8,7 +8,7 @@ const path = require('path');
 const config = require('./config');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://attahirilouay:attahirilouay@cluster0.3hipxxt.mongodb.net/', {
+mongoose.connect('mongodb+srv://attahirilouay:attahirilouay@cluster0.p4o8ut9.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -69,4 +69,4 @@ fs.readdirSync(path.join(__dirname, 'handlers')).forEach((handler) => {
 client.music.loadMusic(client);
 
 
-client.login(process.env.TOKEN)
+client.login(config.token)

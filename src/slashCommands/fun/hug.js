@@ -1,5 +1,6 @@
 const { ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } = require('discord.js');
 const axios = require('axios');
+const { primaryColor } = require('../../config');
 
 module.exports = {
 	name: 'hug',
@@ -22,6 +23,7 @@ module.exports = {
         const embed = new EmbedBuilder()
         .setDescription(`**${interaction.member} gaf ${user} een knuffel!**`)
         .setImage(gif)
+        .setColor(primaryColor)
 
         await interaction.reply({ embeds: [embed]});
 

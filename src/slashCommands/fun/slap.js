@@ -1,6 +1,7 @@
 const { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ApplicationCommandOptionType } = require('discord.js');
 const axios = require('axios');
 const discordTranscripts = require('discord-html-transcripts');
+const { primaryColor } = require('../../config');
 
 module.exports = {
 	name: 'slap',
@@ -15,8 +16,7 @@ module.exports = {
             required: true
         }
     ],
-	run: async (client, interaction) => {
-           
+	run: async (client, interaction) => {      
         const user = interaction.options.get('gebruiker')?.user;	
         if(isAuthor(user, interaction.user)) return interaction.reply({ content: 'Je kunt jezelf niet slaan.', ephemeral: true})
         const gif = await kissGif();
@@ -24,12 +24,10 @@ module.exports = {
         const embed = new EmbedBuilder()
         .setDescription(`**${interaction.member} gaf ${user} een klap!**`)
         .setImage(gif)
-        .setColor('5865F2')
+        .setColor(primaryColor)
 
         await interaction.reply({ embeds: [embed]});
 
-        
-        
         async function kissGif(){
             const response = await axios.get('https://api.otakugifs.xyz/gif?reaction=slap');
             return response.data.url;

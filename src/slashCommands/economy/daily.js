@@ -1,4 +1,5 @@
 const { ApplicationCommandType, EmbedBuilder } = require('discord.js');
+const { primaryColor } = require('../../config');
 
 module.exports = {
     name: 'daily',
@@ -34,7 +35,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setDescription(`Je hebt je dagelijkse beloning van **${dailyResult.reward}** euro geclaimd!`)
-            .setColor('5865F2');
+            .setColor(primaryColor);
 
         interaction.reply({ embeds: [embed] })
     }

@@ -1,4 +1,5 @@
 const { ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } = require('discord.js');
+const { primaryColor } = require('../../config');
 
 module.exports = {
 	name: 'balance',
@@ -20,7 +21,7 @@ module.exports = {
         const [balance, bank] = [balanceData?.money, balanceData?.bank];
 
         const embed = new EmbedBuilder()
-        .setColor('5865F2')
+        .setColor(primaryColor)
         .setAuthor({ name: `${economyUser.user.username}'s balance`, iconURL: economyUser.user.displayAvatarURL()})
         .addFields(
             { name: 'Cash', value: `€ ${balance || 0}`, inline: true},

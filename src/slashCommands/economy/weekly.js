@@ -1,5 +1,6 @@
 const { ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } = require('discord.js');
 const Economy = require('discord-economy-super/mongodb');
+const { primaryColor } = require('../../config');
 
 module.exports = {
     name: 'weekly',
@@ -35,7 +36,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setDescription(`Je hebt je wekelijkse beloning van **${weeklyResult.reward}** euro geclaimd!`)
-            .setColor('5865F2');
+            .setColor(primaryColor);
 
         interaction.reply({ embeds: [embed] })
     }

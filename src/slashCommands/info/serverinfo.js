@@ -1,5 +1,6 @@
 const { EmbedBuilder } = require('discord.js');
 const timestampToDate = require('timestamp-to-date');
+const { primaryColor } = require('../../config');
 
 module.exports = {
     name: 'serverinfo',
@@ -28,6 +29,7 @@ module.exports = {
                 { name: 'Roles', value: rolesAmount, inline: true },
             )
             .setFooter({ text: footerText })
+            .setColor(primaryColor)
 
         return interaction.reply({ embeds: [embed] })
     }

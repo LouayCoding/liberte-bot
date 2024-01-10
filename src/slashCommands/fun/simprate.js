@@ -26,8 +26,7 @@ module.exports = {
 
         function gayRate(mentionedUser, author) {
             const result = Math.ceil(Math.random() * 100);
-            if (mentionedUser.id === author.id) return `Jij bent **${result}%** simp.`
-            else return `${mentionedUser} is **${result}%** simp.`
+            return `${mentionedUser} is **${result}%** simp.`
         }
     }
 };

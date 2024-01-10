@@ -34,7 +34,8 @@ async function playEvent(client) {
                     .setCustomId('loop')
                     .setEmoji('1069317774335287366')
                     .setStyle(ButtonStyle.Secondary),
-                new ButtonBuilder()
+             
+                    new ButtonBuilder()
                     .setCustomId('stop')
                     .setEmoji('1069321694302441573')
                     .setStyle(ButtonStyle.Danger),

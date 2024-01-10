@@ -83,7 +83,7 @@ class Music {
     }
 
     async isLoading(interaction, query) {
-        const emoji = this.client.emojis.cache.get('1184464633432649748');
+        const emoji = this.client.emojis.cache.get('1194044928133697586');
         this.embed = new EmbedBuilder()
             .setDescription(`${emoji} Aan het zoeken naar... **${query}**`)
         this.response = await interaction.reply({ embeds: [this.embed] });

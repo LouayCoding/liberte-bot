@@ -20,18 +20,15 @@ module.exports = {
         
         targetMember.timeout(null).then(console.log).catch(console.error);
 
-        // Verwijderen van de timeout rol of het herstellen van de rechten van de gebruiker
-        // Implementeer hier de code om de gebruiker uit de timeout te halen
-
         try {
             const instantEmbed = new EmbedBuilder()
                 .setColor('5865F2')
-                .setAuthor({ name: `${targetUser.tag}, is uit de timeout gehaald!`, iconURL: targetUser.displayAvatarURL() });
+                .setAuthor({ name: `${targetUser}, is uit de timeout gehaald!`, iconURL: targetUser.displayAvatarURL() });
 
             const logEmbed = new EmbedBuilder()
                 .setColor('5865F2')
                 .setAuthor({ name: `[UNTIMEOUT] ${targetUser.tag}`, iconURL: targetUser.displayAvatarURL() })
-                .setDescription(`${targetUser.tag} is uit de timeout gehaald door ${interaction.user.tag}`)
+                .setDescription(`${targetUser} is uit de timeout gehaald door ${interaction.user.tag}`)
                 .setFooter({ text: `ID: ${targetUser.id}` })
 
             const logChannel = interaction.guild.channels.cache.get(logChannelId);

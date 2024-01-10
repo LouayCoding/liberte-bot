@@ -131,3 +131,5 @@ dist
 .env
 .env
 .env
+src/config.js
+src/config.js

@@ -12,7 +12,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setAuthor({ name: author, iconURL: interaction.user.displayAvatarURL() })
             .setDescription(quote)
-            .setColor('5865F2')
+
         await interaction.reply({ embeds: [embed] });
 
         async function generateQuote() {

@@ -8,7 +8,7 @@ const { tiktok } = require('../utils/tiktok');
 const { instagram } = require('../utils/instagram');
 const { countSystem } = require('../utils/countSystem');
 const { leveling } = require('../utils/leveling');
-Levels.setURL("mongodb+srv://attahirilouay:attahirilouay@cluster0.3hipxxt.mongodb.net/");
+// Levels.setURL("mongodb+srv://attahirilouay:attahirilouay@cluster0.3hipxxt.mongodb.net/");
 
 
 const prefix = client.prefix;
@@ -18,14 +18,19 @@ client.on('messageCreate', async message => {
 	if (message.author.bot) return;
 	if (message.channel.type !== 0) return;
 
-	await countSystem(message);
+	// await countSystem(message);
 
 
 	Array.from(new Set(message.content.match(urlRegex()))).slice(0, 1).forEach((url) => {
        tiktok(message, url);
     });
 
-	await leveling(message)
+	if(message.content.toLocaleLowerCase().includes('picperms') || message.content.toLocaleLowerCase().includes('pic perms')){
+		const embed = new EmbedBuilder()
+		.setColor(config.primaryColor)
+		.setDescription('Je kan **picperms** krijgen door **.gg/dirham** in je status te zetten')
+		return message.reply({ embeds: [embed]})
+	}
 
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);

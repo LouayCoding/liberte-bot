@@ -9,17 +9,18 @@ module.exports = {
             .setPlaceholder('Maak een keuze')
             .addOptions(
                 new StringSelectMenuOptionBuilder()
-                    .setLabel('Solliciteren')
-                    .setValue('solliciteren')
-                    .setEmoji('✍️'), // Emoji die solliciteren vertegenwoordigt
+                    .setLabel('Hulp')
+                    .setValue('Hulp')
+                    .setEmoji('🔄'),
+                new StringSelectMenuOptionBuilder()
+                    .setLabel('Minecraft whitelist')
+                    .setValue('minecraft')
+                    .setEmoji('<:Minecraft:1194636062757232723>'),
                 new StringSelectMenuOptionBuilder()
                     .setLabel('Vrouwen rol')
                     .setValue('Vrouw')
                     .setEmoji('🌸'), // Emoji voor suggestie indienen
-                new StringSelectMenuOptionBuilder()
-                    .setLabel('Overig')
-                    .setValue('Overig')
-                    .setEmoji('🔄') // Emoji voor andere zaken
+
             );
 
         const row1 = new ActionRowBuilder()

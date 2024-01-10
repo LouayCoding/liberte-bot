@@ -1,4 +1,5 @@
 const { ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType, ActionRowBuilder, ButtonStyle, ButtonBuilder, ComponentType } = require('discord.js');
+const { primaryColor } = require('../../config');
 
 module.exports = {
     name: 'avatar',
@@ -70,9 +71,9 @@ module.exports = {
         }
 
         const embed = new EmbedBuilder()
-            .setAuthor({ name: `${user.tag}` })
-            .setTitle('Avatar')
+            .setTitle(`Avatar ${user.tag}`)
             .setImage(avatar)
+            .setColor(primaryColor)
 
         const message = await interaction.reply({ embeds: [embed], components: [row], fetchReply: true });
 
@@ -101,9 +102,8 @@ module.exports = {
                         );
 
                     const embed = new EmbedBuilder()
-                        .setAuthor({ name: `${user.tag}` })
-                        .setTitle('Avatar')
-                        .setColor(client.config.primaryColor)
+                        .setTitle(`Avatar ${user.tag}`)
+                        .setColor(primaryColor)
                         .setImage(guildAvatar)
 
                     await i.deferReply();
@@ -131,9 +131,8 @@ module.exports = {
                         );
 
                     const embed = new EmbedBuilder()
-                        .setAuthor({ name: `${user.tag}` })
-                        .setTitle('Avatar')
-                        .setColor(client.config.primaryColor)
+                        .setTitle(`Avatar ${user.tag}`)
+                        .setColor(primaryColor)
                         .setImage(guildAvatar)
 
                     await i.deferReply();
@@ -163,9 +162,8 @@ module.exports = {
                         );
 
                     const embed = new EmbedBuilder()
-                        .setAuthor({ name: `${user.tag}` })
-                        .setTitle('Avatar')
-                        .setColor(client.config.primaryColor)
+                        .setTitle(`Avatar ${user.tag}`)
+                        .setColor(primaryColor)
                         .setImage(userBanner)
 
                     await i.deferReply();
@@ -182,7 +180,7 @@ module.exports = {
             try {
                 await i.message.delete()
             } catch (error) {
-                
+
             }
         });
 

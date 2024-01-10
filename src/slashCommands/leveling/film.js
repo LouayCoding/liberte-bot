@@ -34,7 +34,7 @@ module.exports = {
                     .setTitle(movieInfo.title)
                     .setDescription(movieInfo.overview)
                     .setImage(`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`);
-                interaction.channel.send({ embeds: [embed], components: [row] });
+                interaction.reply({ embeds: [embed], components: [row] });
             })
             .catch(error => {
                 // Handle errors here
