@@ -7,9 +7,6 @@ module.exports = {
     type: ApplicationCommandType.ChatInput,
     cooldown: 3000,
     run: async (client, interaction) => {
-
-        
-
         const queue = client.distube.getQueue(interaction);
         if (!queue) return interaction.reply({ content: 'Er word nu niks afgespeeld.', ephemeral: true });
         const song = queue.songs[0];
@@ -24,7 +21,6 @@ module.exports = {
         .setBlur(5)
         .setOverlayOpacity(0.7)
         .build();
-    
     
         interaction.reply({
           files: [{

@@ -8,7 +8,9 @@ const filesizeLimit = {
     tier2: 50 * 1024 * 1024 - 1000,
     tier3: 100 * 1024 * 1024 - 1000
 };
+const path = require('path');
 
+console.log(path.join(__dirname, '..', 'yt-dlp.exe'))
 let cooldown_users = new Set();
 let supress_embeds = new Set();
 

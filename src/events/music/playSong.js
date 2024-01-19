@@ -1,20 +1,16 @@
-const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js");
+const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, AttachmentBuilder } = require("discord.js");
+
 
 async function playEvent(client) {
     client.distube.on('playSong', async (queue, song) => {
-        const interaction = song.metadata.i;
+        
 
-        const embed = new EmbedBuilder()
-            .setTitle(song.name)
-            .setURL(song.url)
-            .addFields(
-                { name: 'Kanaal', value: song.uploader.name, inline: true },
-                { name: 'Duur', value: song.formattedDuration, inline: true },
-                { name: 'Views', value: `${song.views.toLocaleString()}`, inline: true },
-                { name: 'Positie', value: `${song.user.tag}`, inline: true }
-            )
-            .setFooter({ text: `Er zitten ${queue.songs.length} nummers in de queue`})
-            .setThumbnail(song.thumbnail)
+       
+        
+
+       
+
+      
 
         const row = new ActionRowBuilder()
             .addComponents(
@@ -34,8 +30,8 @@ async function playEvent(client) {
                     .setCustomId('loop')
                     .setEmoji('1069317774335287366')
                     .setStyle(ButtonStyle.Secondary),
-             
-                    new ButtonBuilder()
+
+                new ButtonBuilder()
                     .setCustomId('stop')
                     .setEmoji('1069321694302441573')
                     .setStyle(ButtonStyle.Danger),
@@ -64,8 +60,10 @@ async function playEvent(client) {
                     .setEmoji('📰')
                     .setStyle(ButtonStyle.Primary),
             );
-
-        const message = await interaction.channel.send({ embeds: [embed], components: [row, row1] });
+        
+       
+        const message = await interaction.channel.send({ embeds: [embed], components: [row, row1], files: [file] });
+        console.log(queue.connection)
         song.metadata.i = message;
 
         await client.music.buttonCollector(message, interaction)

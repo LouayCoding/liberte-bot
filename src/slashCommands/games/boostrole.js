@@ -29,6 +29,12 @@ module.exports = {
                             description: 'De hex kleurcode voor de rol (bv. #ff0000)',
                             type: ApplicationCommandOptionType.String,
                             required: true
+                        },
+                        {
+                            name: 'emoji',
+                            description: 'De nieuwe hex kleurcode voor de rol (bv. #00ff00)',
+                            type: ApplicationCommandOptionType.Attachment,
+                            required: false
                         }
                     ]
                 },
@@ -48,6 +54,12 @@ module.exports = {
                             description: 'De nieuwe hex kleurcode voor de rol (bv. #00ff00)',
                             type: ApplicationCommandOptionType.String,
                             required: false
+                        },
+                        {
+                            name: 'emoji',
+                            description: 'De nieuwe hex kleurcode voor de rol (bv. #00ff00)',
+                            type: ApplicationCommandOptionType.Attachment,
+                            required: false
                         }
                     ]
                 },
@@ -66,8 +78,9 @@ module.exports = {
             const roleScheiding = interaction.guild.roles.cache.get('1145482969914544138').position;
             const roleName = interaction.options.getString('naam');
             const roleColor = interaction.options.getString('kleur');
+            const roleEmoji = interaction.options.getAttachment('emoji')
 
-            const userId = interaction.user.id;
+
 
             // Controleren of de kleur geldig is
             if (!/^#[0-9A-F]{6}$/i.test(roleColor)) {
@@ -82,7 +95,6 @@ module.exports = {
                     // Aanmaken van een nieuwe gebruiker
                     user = new (mongoose.model('User'))({
                         userId: interaction.user.id,
-                        // Stel andere vereiste velden in
                     });
 
                     await user.save();
@@ -92,19 +104,25 @@ module.exports = {
                     return interaction.reply({ content: 'Je hebt al een booster rol.', ephemeral: true });
                 }
 
-                // Rol aanmaken
-                const role = await interaction.guild.roles.create({
+                const roleOptions = {
                     name: roleName,
                     color: roleColor,
                     position: roleScheiding - 1
-                });
+                };
 
-                
+                if (roleEmoji) {
+                    roleOptions.icon = roleEmoji.url;
+                }
+
+
+                const role = await interaction.guild.roles.create(roleOptions);
+
 
                 await interaction.member.roles.add(role);
 
-                // De boosterRoleId van de gebruiker bijwerken in de database
+               
                 user.boosterRoleId = role.id;
+
                 await user.save();
 
                 await interaction.reply({ content: `Rol ${role} succesvol aangemaakt met kleur **${roleColor}**`, ephemeral: true });
@@ -116,6 +134,7 @@ module.exports = {
         } else if (subCommand === 'edit') {
             const roleName = interaction.options.getString('naam');
             const roleColor = interaction.options.getString('kleur');
+            const roleEmoji = interaction.options.getAttachment('emoji')
 
             try {
                 const user = await mongoose.model('User').findOne({ userId: interaction.user.id });
@@ -141,10 +160,14 @@ module.exports = {
                     updatedOptions.color = roleColor;
                 }
 
-                await role.edit(updatedOptions);
+                if (roleEmoji) {
+                    updatedOptions.icon = roleEmoji.url;
+                }
 
-                // Voeg hier de rolvermelding toe aan het antwoord
-                await interaction.reply({ content: `Booster rol <@&${roleId}> is bijgewerkt met ${roleName ? 'naam: **' + roleName + '**' : ''}${roleColor ? ' en kleur: **' + roleColor + '**' : ''}.`, ephemeral: true });
+                await role.edit(updatedOptions);
+                await user.save();
+
+                await interaction.reply({ content: `Booster rol <@&${roleId}> is bijgewerkt met ${roleName ? 'naam: **' + roleName + '**' : ''}${roleColor ? ' en kleur: **' + roleColor + '**' : ''}${roleEmoji ? 'en een nieuw **emoji**' : ''}.`, ephemeral: true });
 
             } catch (error) {
                 console.error(error);
@@ -154,6 +177,7 @@ module.exports = {
             try {
                 const user = await mongoose.model('User').findOne({ userId: interaction.user.id });
                 const roleId = user.boosterRoleId;
+
 
                 if (!roleId) {
                     return interaction.reply({ content: 'Je hebt geen booster rol om te verwijderen.', ephemeral: true });

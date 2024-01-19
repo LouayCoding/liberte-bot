@@ -62,8 +62,7 @@ module.exports = {
             default:
                 break;
 
-            case 'Overig':
-                role = interaction.guild.roles.cache.get(vrouwenRol);
+            case 'Hulp':
                 channel = await interaction.guild.channels.create({
                     name: interaction.user.username,
                     type: ChannelType.GuildText,

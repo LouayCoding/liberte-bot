@@ -4,24 +4,26 @@ const client = require('..');
 client.on('interactionCreate', async interaction => {
     if (!interaction.isButton()) return;
     let button;
-console.log(interaction.customId)
-    
-    
+    console.log(interaction.customId)
+
+
     if (interaction.customId.startsWith('accepteren')) {
-      button = client.buttons.get('accepteren');
+        button = client.buttons.get('accepteren');
     } else if (interaction.customId.startsWith('roles')) {
-      button = client.buttons.get('roles');
+        button = client.buttons.get('roles');
+    } else if (interaction.customId.startsWith('unban')) {
+        button = client.buttons.get('unban');
     } else {
-      button = client.buttons.get(interaction.customId);
+        button = client.buttons.get(interaction.customId);
     }
-    
-
-    
-
-    
 
 
-    
+
+
+
+
+
+
     if (!button) return;
 
     try {

@@ -22,6 +22,7 @@ client.on('messageDelete', (message) => {
     // Bericht had tekstinhoud
     if (message.content) {
         const textEmbed = new EmbedBuilder()
+            .setAuthor({ name: `${message.author.username}`, iconURL: `${message.member.user.displayAvatarURL()}` })
             .setDescription(`**Bericht verzonden door ${message.author} en verwijderd in ${message.channel}**\n${message.content}`)
             .setTimestamp()
             .setColor('#FF470F')

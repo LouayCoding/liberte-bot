@@ -1,11 +1,11 @@
 module.exports = {
     ticketRoles: ['1181783092428558376', '1188131909235122276'],
     vrouwenRol: '1145440357006454795',
-    logChannelId: '1145440436236857445',
+    logChannelId: '1145440435016302723',
     vanityChannelId: '1193590170914656296',
     applicationChannelId: '1184335492456652850',
     countChannelId: '1189304832180359218',
-    levelupChannelId: '1181784372181999707',
+    levelupChannelId: '1192614173675356170',
     berichtenLogChannelId: '1145440437402882118',
     ticketCategoryId: '1145482542544338994',
     picperms: '1193559973586813029',
@@ -22,5 +22,8 @@ module.exports = {
     boosterRoleColor: '#f47fff',
     boostRoleId: '1145495567758282874',
     token: '',
-    clientId: '1193530865897185370'
+    clientId: '1193530865897185370',
+    databaseURL: '',
+    musicChannelId: '1192614173675356170',
+    adminRole: '1192939363093467237'
 };

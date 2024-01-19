@@ -172,6 +172,7 @@ module.exports = {
                     { label: 'Italiaans', value: 'roles-1145440382621073609', emoji: '🇮🇹' },
                     { label: 'Palestijns', value: 'roles-1145440383514447993', emoji: '🇵🇸' },
                     { label: 'Armeens', value: 'roles-1145440384583991367', emoji: '🇦🇲' },
+                    { label: 'Bosnisch', value: 'roles-1195403714073202698', emoji: '🇧🇦' },
                 ]
 
 

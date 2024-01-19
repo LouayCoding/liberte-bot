@@ -1,4 +1,5 @@
 const { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ApplicationCommandOptionType } = require('discord.js');
+const { primaryColor } = require('../../config');
 
 module.exports = {
     name: 'play',
@@ -16,16 +17,13 @@ module.exports = {
     run: async (client, interaction) => {
         const nummer = interaction.options.get('nummer')?.value;
 
-        const isAllowed = await client.music.isAllowed(interaction);
-        if(!isAllowed) return;
+        const embed = new EmbedBuilder().setDescription(`Aan het zoeken naar **${nummer}**...`).setColor(primaryColor);
+        const interactionReply = await interaction.reply({ embeds: [embed] });
         
-        const interactionReturn = await client.music.isLoading(interaction, nummer);
-        if(!interactionReturn) return;
-
 
         client.distube.play(interaction.member.voice.channel, nummer, {
             interaction,
-            metadata: { i: interactionReturn },
+            metadata: { interaction: interactionReply.interaction },
             member: interaction.member,
             textChannel: interaction.channel,
         });

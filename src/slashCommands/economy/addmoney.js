@@ -1,5 +1,4 @@
-const { ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } = require('discord.js');
-const Economy = require('discord-economy-super/mongodb');
+const { EmbedBuilder, ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = {
     name: 'money',

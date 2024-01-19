@@ -14,7 +14,6 @@ const Count = mongoose.model('Count', countSchema);
 const saveToDatabase = async () => {
     try {
         await Count.findOneAndUpdate({}, cachedData, { upsert: true });
-        console.log('Gegevens opgeslagen in de database.');
     } catch (error) {
         console.error('Fout bij opslaan in de database:', error);
     }

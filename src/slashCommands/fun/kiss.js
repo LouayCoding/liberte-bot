@@ -30,7 +30,7 @@ module.exports = {
         
         
         async function kissGif(){
-            const response = await axios.get('https://api.otakugifs.xyz/gif?reaction=hug');
+            const response = await axios.get('https://api.otakugifs.xyz/gif?reaction=kiss');
             return response.data.url;
         }
 

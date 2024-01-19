@@ -2,12 +2,12 @@
 
 const { EmbedBuilder } = require('discord.js');
 const client = require('..');
-const { joinLogChannelId } = require('../config');
+const { joinLogChannelId, succesColor } = require('../config');
 
 client.on('guildMemberAdd', member => {
   const joinEmbed = new EmbedBuilder()
     .setAuthor({ name: 'Lid toegetreden', iconURL: member.user.displayAvatarURL() })
-    .setColor('#FF470F')
+    .setColor(succesColor)
     .setDescription(`${member} ${member.user.tag}`)
     .addFields({ name: 'Account Leeftijd', value: calculateAccountAge(member.user.createdAt) })
     .setFooter({ text: `ID: ${member.id}` })
